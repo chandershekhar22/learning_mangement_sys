@@ -168,7 +168,7 @@ function CourseCurriculum() {
     } catch (e) {
       console.log(e);
     }
-  }
+  } 
 
   async function handleDeleteLecture(currentIndex) {
     let cpyCourseCurriculumFormData = [...courseCurriculumFormData];
