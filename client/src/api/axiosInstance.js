@@ -1,17 +1,19 @@
 import axios from "axios";
 
-const axiosInstance=axios.create({
-    baseURL:'http://localhost:5000'
-})
+const axiosInstance = axios.create({
+  baseURL: process.env.REACT_APP_BACKEND_URL, // ✅ Now environment-based
+});
 
-axiosInstance.interceptors.request.use(config=>{
-    const accessToken=JSON.parse(sessionStorage.getItem('accessToken')) || "";
+axiosInstance.interceptors.request.use(
+  (config) => {
+    const accessToken = JSON.parse(sessionStorage.getItem("accessToken")) || "";
 
-    if(accessToken){
-        config.headers.Authorization=`Bearer ${accessToken}`
+    if (accessToken) {
+      config.headers.Authorization = `Bearer ${accessToken}`;
     }
-    return config
+    return config;
+  },
+  (err) => Promise.reject(err)
+);
 
-},(err)=>Promise.reject(err))
-
-export default axiosInstance
+export default axiosInstance;
