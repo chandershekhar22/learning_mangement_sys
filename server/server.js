@@ -34,6 +34,10 @@ app.use("/student/course",studentViewCourseRoutes)
 app.use("/student/order",studentViewOrderRoutes)
 app.use("/student/courses-bought",studentCoursesRoutes);
 app.use("/student/course-progress", studentCourseProgressRoutes);
+app.get("/", (req, res) => {
+  res.send("🚀 Server is running! Welcome to the API.");
+});
+
 
 app.use((err, req, res, next) => {
     console.log(err.stack);
