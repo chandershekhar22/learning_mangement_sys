@@ -1,7 +1,8 @@
 import axios from "axios";
 
 const axiosInstance = axios.create({
-  baseURL: process.env.REACT_APP_BACKEND_URL, // ✅ Now environment-based
+baseURL: import.meta.env.VITE_BACKEND_URL
+ // ✅ Now environment-based
 });
 
 axiosInstance.interceptors.request.use(
